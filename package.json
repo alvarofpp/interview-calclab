@@ -1,0 +1,19 @@
+{
+  "name": "calclab-backend-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/calclab-public/calclab-backend-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/calclab-public/calclab-backend-test/issues"
+  },
+  "homepage": "https://gitlab.com/calclab-public/calclab-backend-test#readme"
+}
