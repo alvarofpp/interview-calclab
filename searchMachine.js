@@ -24,6 +24,10 @@ module.exports = class SearchMachine {
     }
   }
 
+  objectFilled() {
+    return Object.keys(this.object).length > 0
+  }
+
   isFinalState() {
     return this.state === this.regex.length
   }

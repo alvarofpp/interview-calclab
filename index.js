@@ -16,6 +16,10 @@ for (let i = 0; i < exam.length; i++) {
   const line = exam[i]
 
   if (line === '') {
+    if (searchMachine.objectFilled()) {
+      searchMachine.fillRestObject()
+      result.push(searchMachine.getObject())
+    }
     searchMachine.resetState()
     continue
   }
@@ -23,15 +27,13 @@ for (let i = 0; i < exam.length; i++) {
   searchMachine.apply(line)
 
   if (searchMachine.isFinalState()) {
-    const newObject = searchMachine.getObject()
-    result.push(newObject)
+    result.push(searchMachine.getObject())
   }
 }
 
-if (! searchMachine.isFinalState()) {
+if (searchMachine.objectFilled()) {
   searchMachine.fillRestObject()
-  const newObject = searchMachine.getObject()
-  result.push(newObject)
+  result.push(searchMachine.getObject())
 }
 
 fs.writeFileSync('RESULT.json', JSON.stringify(result, null, 2))
