@@ -17,6 +17,9 @@ module.exports = class SearchMachine {
 
     this.state += 1
     this.object[rgx.field] = capture[0].trim()
+    if ('apply_func' in rgx) {
+      this.object[rgx.field] = rgx.apply_func(this.object[rgx.field])
+    }
 
     if ('next_inline' in rgx) {
       const startLen = capture['index'] + capture[0].length

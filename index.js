@@ -6,7 +6,16 @@ const result = []
 
 const searchMachine = new SearchMachine([
   {field: 'name', pattern: /(?<=Exame\s*:).+/,},
-  {field: 'result', pattern: /(?<=Resultado\s*:\s*)[0-9,.]+/, next_inline: true,},
+  {
+    field: 'result',
+    pattern: /(?<=Resultado\s*:\s*)[0-9,.]+/,
+    apply_func: (value) => {
+      var newValue = value.replace('.', '')
+        .replace(',', '.')
+      return parseFloat(newValue)
+    },
+    next_inline: true,
+  },
   {field: 'unit', pattern: /.+/,},
   {field: 'material', pattern: /(?<=Material\s*:\s*).+/,},
   {field: 'metodo', pattern: /(?<=Método\s*:\s*).+/,},
